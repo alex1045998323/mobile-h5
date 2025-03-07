@@ -1,3 +1,4 @@
+import { sentryVitePlugin } from "@sentry/vite-plugin";
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -16,18 +17,23 @@ export default defineConfig({
       }
     }
   },
-  plugins: [
-    vue(),
-    AutoImport({
-      resolvers: [VantResolver()]
-    }),
-    Components({
-      resolvers: [VantResolver()]
-    })
-  ],
+
+  plugins: [vue(), AutoImport({
+    resolvers: [VantResolver()]
+  }), Components({
+    resolvers: [VantResolver()]
+  }), sentryVitePlugin({
+    org: "cebbc7bcc07c",
+    project: "javascript-vue"
+  })],
+
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src')
     }
+  },
+
+  build: {
+    sourcemap: true
   }
 })

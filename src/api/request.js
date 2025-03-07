@@ -10,6 +10,8 @@
 import axios from 'axios'
 import { get } from 'lodash'
 import { showNotify } from 'vant'
+// 上报http请求错误
+import * as Sentry from "@sentry/vue";
 
 const createService = () => {
   const instance = axios.create({
@@ -116,6 +118,8 @@ const createService = () => {
         default:
           break
       }
+      // 使用 Sentry 上报错误
+      Sentry.captureException(error);
       showNotify({ type: 'danger', message: error.message, duration: 500000 })
       // 你可以在这里处理错误
       return Promise.reject(error)

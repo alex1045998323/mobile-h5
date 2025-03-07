@@ -18,6 +18,10 @@ registerLocale(app)
 import registerRouter from '@/register/registerRouter'
 registerRouter(app)
 
+// 初始化Sentry监控异常
+import registerSentry from '@/register/registerSentry'
+registerSentry(app)
+
 import App from '@/App.vue'
 
 // Lazyload 指令需要单独进行注册

@@ -9,6 +9,8 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
+    "@sentry/vite-plugin": "^3.2.2",
+    "@sentry/vue": "^9.5.0",
     "axios": "^1.7.7",
     "lodash": "^4.17.21",
     "vant": "^4.9.7",
